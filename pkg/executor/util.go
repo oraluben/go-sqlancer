@@ -107,7 +107,9 @@ func DataType2Len(t string) int {
 	case "text":
 		return 511
 	case "float":
-		return 64
+		// When used in table definition, -1 means to not set the number of bits.
+		// Check https://dev.mysql.com/doc/refman/8.0/en/floating-point-types.html before changing this.
+		return -1
 	}
 	return 16
 }
